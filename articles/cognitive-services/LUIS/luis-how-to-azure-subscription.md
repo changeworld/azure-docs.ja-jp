@@ -29,16 +29,7 @@ ms.locfileid: "113666305"
 * 100 万件の作成トランザクション 
 * 1 か月あたり 1,000 件のテスト予測エンドポイント要求。
 
-<<<<<<< HEAD
-|リソース|目的|Cognitive service `kind`|Cognitive service `type`|
-|--|--|--|--|
-|リソースの作成|これにより、アプリケーションの作成、管理、トレーニング、テスト、および発行を行うことができます。 LUIS アプリの作成をプログラムによって、または LUIS ポータルから行う場合は、[LUIS オーサリング リソースを作成](luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal)します。 Azure オーサリング リソースをアプリケーションにリンクする前に、[LUIS アカウントを移行](luis-migration-authoring.md#what-is-migration)する必要があります。 [共同作成者ロール](#contributions-from-other-authors)にユーザーを割り当てることで、オーサリング リソースへのアクセス許可を制御することができます。 <br><br> LUIS オーサリング リソースに利用できるサービス レベルは 1 つです。<br> <ul> <li>**Free F0 オーサリング リソース**。100 万件の無料オーサリング トランザクションと 1,000 件のテスト用無料予測エンドポイント要求が毎月提供されます。 |`LUIS.Authoring`|`Cognitive Services`|
-|予測リソース| LUIS アプリケーションを発行したら、予測リソースまたはキーを使用して、予測エンドポイント要求をクエリします。 クライアント アプリで要求する予測がオーサリングまたはスターター リソースによって提供される 1,000 件の要求を超える場合は、事前に LUIS 予測リソースを作成しておきます。 <br><br> 予測リソースには 2 つのサービス レベルを利用できます。<br><ul> <li> **Free F0 予測リソース**。これによって、毎月 10,000 件の無料予測エンドポイント要求が提供されます。<br> <li> **Standard S0 予測リソース**。これは有料のサービス レベルです。 価格に関して詳しくは、[こちら](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)をご覧ください。|`LUIS`|`Cognitive Services`|
-|スターターまたは試用版のリソース|これにより、アプリケーションの作成、管理、トレーニング、テスト、および発行を行うことができます。 最初に LUIS にサインインするときにスターター リソース オプションを選択した場合は、このリソースが既定で作成されます。 スターター キーは、最終的に非推奨になります。 すべての LUIS ユーザーは[アカウントを移行](luis-migration-authoring.md#what-is-migration)し、LUIS アプリケーションをオーサリング リソースにリンクする必要があります。 オーサリング リソースとは異なり、このリソースによって、Azure ロールベースのアクセス制御のためのアクセス許可が付与されることはありません。 <br><br> オーサリング リソースと同様に、スターター リソースでも、100 万件の無料オーサリング トランザクションと 1,000 件のテスト用無料予測エンドポイント要求が提供されます。|-|Azure リソースではありません。|
-|[Cognitive Services マルチサービスのリソース キー](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|LUIS および他のサポートされている Cognitive Services と共有される予測エンドポイント要求に対するクエリを実行します。|`CognitiveServices`|`Cognitive Services`|
-=======
 [v3.0-preview LUIS Programmatic API](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c2f) を使用して、作成リソースを管理できます。 
->>>>>>> repo_sync_working_branch
 
 ## <a name="prediction-resource"></a>予測リソース
 

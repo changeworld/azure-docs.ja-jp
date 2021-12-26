@@ -1,149 +1,169 @@
 ---
 title: Azure Pipelines を使用してカスタム ポリシーをデプロイする
 titleSuffix: Azure AD B2C
-description: Azure DevOps Services で Azure Pipelines を使用して、CI/CD パイプラインに Azure AD B2C カスタム ポリシーをデプロイする方法について説明します。
+description: Azure Pipelines を使用して、CI/CD パイプラインに Azure AD B2C カスタム ポリシーをデプロイする方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/14/2020
-ms.author: mimart
+ms.date: 08/26/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 913f21b90043209cae1ec9963619389bcb452781
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: f042131bd67c27041ca464fde1be6f4d4915d7a6
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529429"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130039659"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Azure Pipelines を使用してカスタム ポリシーをデプロイする
 
-[Azure Pipelines][devops-pipelines] で設定した継続的インテグレーションとデリバリー (CI/CD) パイプラインを使用して、ソフトウェア デリバリーとコード管理の自動化に Azure AD B2C カスタム ポリシーを含めることができます。 開発、テスト、運用などのさまざまな Azure AD B2C 環境にデプロイするときは、手動プロセスを削除し、Azure Pipelines を使用して自動テストを実行することをお勧めします。
-
-Azure Pipelines を有効にして Azure AD B2C 内でカスタム ポリシーを管理するには、次の 3 つの主要な手順が必要です。
-
-1. Azure AD テナントに Web アプリケーション登録を作成する
-1. Azure リポジトリを構成する
-1. Azure Pipelines を構成する
+[Azure Pipelines](/azure/devops/pipelines) では、継続的インテグレーション (CI) と継続的デリバリー (CD) がサポートされており、コードが継続的に一貫してテストおよびビルドされて、ターゲットに出荷されます。 この記事では、Azure Pipelines を使用して、Azure Active Directory B2C (Azure AD B2C) [カスタム ポリシー](user-flow-overview.md)のデプロイ プロセスを自動化する方法について説明します。
 
 > [!IMPORTANT]
 > Azure Pipelines を使用した Azure AD B2C カスタム ポリシーの管理では、現在、Microsoft Graph API `/beta` エンドポイントで利用できる **プレビュー** 操作を使用します。 実稼働アプリケーションにおけるこれらの API の使用はサポートされていません。 詳細については、「[Microsoft Graph REST API ベータ版のエンドポイント リファレンス](/graph/api/overview?toc=.%2fref%2ftoc.json&view=graph-rest-beta&preserve-view=true)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Azure AD B2C テナント](tutorial-create-tenant.md)、および [B2C IEF ポリシー管理者](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)ロールを持つディレクトリー内のユーザーの資格情報
-* テナントにアップロード済みの[カスタム ポリシー](tutorial-create-user-flows.md?pivots=b2c-custom-policy)
-* Microsoft Graph API のアクセス許可 *Policy.ReadWrite.TrustFramework* でテナントに登録されている [管理アプリ](microsoft-graph-get-started.md)
-* [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)、および [Azure DevOps Services プロジェクト][devops-create-project]へのアクセス
-
-## <a name="client-credentials-grant-flow"></a>クライアント資格情報の付与フロー
-
-ここで説明するシナリオでは、OAuth 2.0 [クライアント資格情報付与フロー](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)を使用して、Azure Pipelines と Azure AD B2C 間のサービス間呼び出しを利用します。 この付与フローでは、Azure Pipelines のような Web サービス (Confidential クライアント) は、別の Web サービス (この場合、Microsoft Graph API) を呼び出すときに、ユーザーを偽装する代わりに、独自の資格情報を使用して認証することができます。 Azure Pipelines は、非対話形式でトークンを取得し、Microsoft Graph API に要求を行います。
+* 「[Active Directory B2C でのカスタム ポリシーの概要](tutorial-create-user-flows.md)」にある手順を完了する。
+* DevOps 組織を作成していない場合は、[Azure DevOps へのサインアップとサインイン](/azure/devops/user-guide/sign-up-invite-teammates)に関するページの手順に従って新規作成する。  
 
 ## <a name="register-an-application-for-management-tasks"></a>管理タスクのためにアプリケーションを登録する
 
-「[前提条件](#prerequisites)」で述べたように、Azure Pipelines によって実行される PowerShell スクリプトがテナント内のリソースにアクセスするために使用できるアプリケーション登録が必要です。
+Azure AD B2C ポリシーをデプロイするには、PowerShell スクリプトを使用します。 PowerShell スクリプトが [Microsoft Graph API](microsoft-graph-operations.md) と対話できるようにするには、事前に Azure AD B2C テナントにアプリケーションの登録を作成します。 まだ行っていない場合は、[Microsoft Graph アプリケーションを登録します](microsoft-graph-get-started.md)。
 
-自動タスクに使用するアプリケーション登録が既にある場合は、アプリ登録の **API アクセス許可** 内で **[Microsoft Graph]**  >  **[ポリシー]**  >  **[Policy.ReadWrite.TrustFramework]** アクセス許可がそれに対して付与されていることを確認します。
-
-管理アプリケーションの登録手順については、[Microsoft Graph を使用した Azure AD B2C の管理](microsoft-graph-get-started.md)に関する記事をご覧ください。
+PowerShell スクリプトから MS Graph のデータにアクセスするには、関連する[アプリケーションのアクセス許可](/graph/permissions-reference)を登録されているアプリケーションに付与します。 アプリ登録の **[API のアクセス許可]** 内で **[Microsoft Graph]**  >  **[ポリシー]**  >  **[Policy.ReadWrite.TrustFramework]** アクセス許可を付与します。
 
 ## <a name="configure-an-azure-repo"></a>Azure リポジトリを構成する
 
-管理アプリケーションを登録すると、ポリシー ファイル用のリポジトリを構成する準備が整います。
+Microsoft Graph アプリケーションを登録すると、ポリシー ファイル用のリポジトリを構成する準備が整います。
 
-1. Azure DevOps Services 組織にサインインします。
+1. [Azure DevOps 組織](https://azure.microsoft.com/services/devops/)にサインインします。
 1. [新しいプロジェクトを作成する][devops-create-project]か、既存のプロジェクトを選択します。
-1. プロジェクト内で **[リポジトリ]** に移動し、 **[ファイル]** ページを選択します。 既存のレポジトリを選択するか、この演習用に 1 つ作成します。
-1. "*B2CAssets*" という名前のフォルダーを作成します。 必要なプレースホルダー ファイルに "*README.md*" という名前を付けて、そのファイルを **コミット** します。 このファイルは、必要に応じて、後で削除できます。
-1. Azure AD B2C ポリシー ファイルを "*B2CAssets*" フォルダーに追加します。 これには、*TrustFrameworkBase.xml*、*TrustFrameWorkExtensions.xml*、*SignUpOrSignin.xml*、*ProfileEdit.xml*、*PasswordReset.xml*、および作成した他のすべてのポリシーが含まれます。 後の手順で使用するために、各 Azure AD B2C ポリシー ファイルのファイル名を記録します (PowerShell スクリプトの引数として使用されます)。
-1. リポジトリのルート ディレクトリに "*Scripts*" という名前のフォルダーを作成し、プレースホルダー ファイルに "*DeployToB2c.ps1*" という名前を付けます。 この時点でファイルをコミットしないでください。後の手順で実行します。
-1. 次の PowerShell スクリプトを "*DeployToB2c.ps1*" に貼り付け、ファイルを **コミット** します。 このスクリプトは Azure AD からトークンを取得し、Microsoft Graph API を呼び出して、"*B2CAssets*" フォルダー内のポリシーを Azure AD B2C テナントにアップロードします。
+1. プロジェクト内で **[リポジトリ]** に移動し、 **[ファイル]** を選択します。 
+1. 既存のレポジトリを選択するか、新規に作成します。
+1. リポジトリのルート ディレクトリに、`B2CAssets` という名前のフォルダーを作成します。 Azure AD B2C カスタム ポリシー ファイルを *B2CAssets* フォルダーに追加します。
+1. リポジトリのルート　ディレクトリに、`Scripts`　という名前のフォルダーを作成します。 PowerShell ファイル *DeployToB2C.ps1* を作成します。 次の PowerShell スクリプトを *DeployToB2C.ps1* に貼り付けます。 
+1. 変更を **コミット** して **プッシュ** します。
 
-    ```PowerShell
-    [Cmdletbinding()]
-    Param(
-        [Parameter(Mandatory = $true)][string]$ClientID,
-        [Parameter(Mandatory = $true)][string]$ClientSecret,
-        [Parameter(Mandatory = $true)][string]$TenantId,
-        [Parameter(Mandatory = $true)][string]$PolicyId,
-        [Parameter(Mandatory = $true)][string]$PathToFile
-    )
+次のスクリプトは、Azure AD からアクセス トークンを取得します。 このトークンを使用して、スクリプトは MS Graph API を呼び出して、*B2CAssets* フォルダーにポリシーをアップロードします。 ポリシーをアップロードする前に、その内容を変更することもできます。 たとえば、`tenant-name.onmicrosoft.com` を実際のテナント名に置き換えます。
 
-    try {
-        $body = @{grant_type = "client_credentials"; scope = "https://graph.microsoft.com/.default"; client_id = $ClientID; client_secret = $ClientSecret }
+```PowerShell
+[Cmdletbinding()]
+Param(
+    [Parameter(Mandatory = $true)][string]$ClientID,
+    [Parameter(Mandatory = $true)][string]$ClientSecret,
+    [Parameter(Mandatory = $true)][string]$TenantId,
+    [Parameter(Mandatory = $true)][string]$Folder,
+    [Parameter(Mandatory = $true)][string]$Files
+)
 
-        $response = Invoke-RestMethod -Uri https://login.microsoftonline.com/$TenantId/oauth2/v2.0/token -Method Post -Body $body
-        $token = $response.access_token
+try {
+    $body = @{grant_type = "client_credentials"; scope = "https://graph.microsoft.com/.default"; client_id = $ClientID; client_secret = $ClientSecret }
 
-        $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-        $headers.Add("Content-Type", 'application/xml')
-        $headers.Add("Authorization", 'Bearer ' + $token)
+    $response = Invoke-RestMethod -Uri https://login.microsoftonline.com/$TenantId/oauth2/v2.0/token -Method Post -Body $body
+    $token = $response.access_token
 
-        $graphuri = 'https://graph.microsoft.com/beta/trustframework/policies/' + $PolicyId + '/$value'
-        $policycontent = Get-Content $PathToFile
-        $response = Invoke-RestMethod -Uri $graphuri -Method Put -Body $policycontent -Headers $headers
+    $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+    $headers.Add("Content-Type", 'application/xml')
+    $headers.Add("Authorization", 'Bearer ' + $token)
 
-        Write-Host "Policy" $PolicyId "uploaded successfully."
+    # Get the list of files to upload
+    $filesArray = $Files.Split(",")
+
+    Foreach ($file in $filesArray) {
+
+        $filePath = $Folder + $file.Trim()
+
+        # Check if file exists
+        $FileExists = Test-Path -Path $filePath -PathType Leaf
+
+        if ($FileExists) {
+            $policycontent = Get-Content $filePath
+
+            # Optional: Change the content of the policy. For example, replace the tenant-name with your tenant name.
+            # $policycontent = $policycontent.Replace("your-tenant.onmicrosoft.com", "contoso.onmicrosoft.com")     
+    
+    
+            # Get the policy name from the XML document
+            $match = Select-String -InputObject $policycontent  -Pattern '(?<=\bPolicyId=")[^"]*'
+    
+            If ($match.matches.groups.count -ge 1) {
+                $PolicyId = $match.matches.groups[0].value
+    
+                Write-Host "Uploading the" $PolicyId "policy..."
+    
+                $graphuri = 'https://graph.microsoft.com/beta/trustframework/policies/' + $PolicyId + '/$value'
+                $response = Invoke-RestMethod -Uri $graphuri -Method Put -Body $policycontent -Headers $headers
+    
+                Write-Host "Policy" $PolicyId "uploaded successfully."
+            }
+        }
+        else {
+            $warning = "File " + $filePath + " couldn't be not found."
+            Write-Warning -Message $warning
+        }
     }
-    catch {
-        Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__
+}
+catch {
+    Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__
 
-        $_
+    $_
 
-        $streamReader = [System.IO.StreamReader]::new($_.Exception.Response.GetResponseStream())
-        $streamReader.BaseStream.Position = 0
-        $streamReader.DiscardBufferedData()
-        $errResp = $streamReader.ReadToEnd()
-        $streamReader.Close()
+    $streamReader = [System.IO.StreamReader]::new($_.Exception.Response.GetResponseStream())
+    $streamReader.BaseStream.Position = 0
+    $streamReader.DiscardBufferedData()
+    $errResp = $streamReader.ReadToEnd()
+    $streamReader.Close()
 
-        $ErrResp
+    $ErrResp
 
-        exit 1
-    }
+    exit 1
+}
 
-    exit 0
-    ```
+exit 0
+```
 
-## <a name="configure-your-azure-pipeline"></a>Azure パイプラインを構成する
+## <a name="configure-azure-pipelines"></a>Azure Pipelines を構成する
 
-リポジトリが初期化され、カスタム ポリシー ファイルが設定されたら、リリース パイプラインをセットアップする準備が整います。
+リポジトリが初期化され、カスタム ポリシー ファイルが設定されたら、リリース パイプラインをセットアップする準備が整います。 パイプラインを作成するには、次の手順に従います。
 
-### <a name="create-pipeline"></a>パイプラインの作成
-
-1. Azure DevOps Services 組織にサインインし、プロジェクトに移動します。
 1. プロジェクトで、 **[パイプライン]**  >  **[リリース]**  >  **[新しいパイプライン]** の順に選択します。
-1. **[テンプレートの選択]** で、 **[空のジョブ]** を選択します。
+1. **[テンプレートの選択]** で、 **[空のジョブ]**  を選択し、 **[適用]** を選択します。
 1. **ステージ名** (たとえば、*DeployCustomPolicies*) を入力し、ペインを閉じます。
 1. **[Add an artifact]\(成果物の追加\)** を選択し、 **[ソースの種類]** で **[Azure リポジトリ]** を選択します。
-    1. PowerShell スクリプトが設定された "*Scripts*" フォルダーを含むソース リポジトリを選択します。
-    1. **既定のブランチ** を選択します。 前のセクションで新しいリポジトリを作成した場合、既定のブランチは "*master*" です。
+    1. **[プロジェクト]** で、自分のプロジェクトを選択します。
+    1. *Scripts* フォルダーを含む **ソース (リポジトリ)** を選択します。
+    1. **規定のブランチ** (たとえば、*master*) を選択します。
     1. **[既定のバージョン]** の設定は、 *[既定のブランチからの最新バージョン]* のままにします。
-    1. リポジトリの **ソース エイリアス** を入力します。 たとえば、"*policyRepo*" などです。 エイリアス名にはスペースを含めないでください。
+    1. リポジトリの **ソース エイリアス** を入力します。 たとえば、"*policyRepo*" などです。 
 1. **[追加]** を選択します。
 1. 目的に合わせてパイプラインの名前を変更します。 たとえば、"*Deploy Custom Policy Pipeline*" などです。
 1. **[保存]** を選択して、パイプライン構成を保存します。
 
 ### <a name="configure-pipeline-variables"></a>パイプライン変数を構成する
 
-1. **[変数]** タブを選択します。
-1. **[パイプライン変数]** の下に次の変数を追加し、指定された値を設定します。
+パイプライン変数を使用すると、パイプラインのさまざまな部分に重要なデータを簡単に取り込むことができます。 以下の変数は、Azure AD B2C 環境に関する情報を提供します。
 
-    | 名前 | 値 |
-    | ---- | ----- |
-    | `clientId` | 前に登録したアプリケーションの **アプリケーション (クライアント) ID**。 |
-    | `clientSecret` | 前に作成した **クライアント シークレット** の値。 <br /> 変数の型を **シークレット** に変更します (ロック アイコンを選択)。 |
-    | `tenantId` | `your-b2c-tenant.onmicrosoft.com`。ここで、*your-b2c-tenant* は Azure AD B2C テナントの名前です。 |
+| Name | 値 |
+| ---- | ----- |
+| `clientId` | 前に登録したアプリケーションの **アプリケーション (クライアント) ID**。 |
+| `clientSecret` | 前に作成した **クライアント シークレット** の値。 <br /> 変数の型を **シークレット** に変更します (ロック アイコンを選択)。 |
+| `tenantId` | `your-b2c-tenant.onmicrosoft.com`。ここで、*your-b2c-tenant* は Azure AD B2C テナントの名前です。 |
 
+パイプライン変数を追加するには、次の手順に従います。
+
+1. パイプラインで、 **[変数]** タブを選択します。
+1. **[パイプライン変数]** で、値を指定して上記の変数を追加します。
 1. **[保存]** を選択して変数を保存します。
 
 ### <a name="add-pipeline-tasks"></a>パイプライン タスクを追加する
 
-次に、ポリシー ファイルをデプロイするタスクを追加します。
+パイプライン タスクは、アクションを実行する事前パッケージされたスクリプトです。 *DeployToB2C.ps1* PowerShell スクリプトを呼び出すタスクを追加します。
 
-1. **[タスク]** タブを選択します。
+1. 作成したパイプラインで、 **[タスク]** タブを選択します。
 1. **[エージェント ジョブ]** を選択し、プラス記号 ( **+** ) を選択してエージェント ジョブにタスクを追加します。
 1. 「**PowerShell**」を検索して選択します。 "Azure PowerShell"、"ターゲット マシンでの PowerShell"、または別の PowerShell エントリを選択しないでください。
 1. 新しく追加された **PowerShell スクリプト** タスクを選択します。
@@ -152,50 +172,19 @@ Azure Pipelines を有効にして Azure AD B2C 内でカスタム ポリシー�
     * **表示名**:このタスクでアップロードするポリシーの名前。 たとえば、*B2C_1A_TrustFrameworkBase*。
     * **[種類]** :ファイル パス
     * **スクリプトのパス**:省略記号 (**_..._* _) を選択し、_Scripts* フォルダーに移動して、*DeployToB2C.ps1* ファイルを選択します。
-    * **引数:**
+    * **引数**: 次の PowerShell スクリプトを入力します。 
 
-        **引数** に対して次の値を入力します。 `{alias-name}` は、前のセクションで指定したエイリアスに置き換えます。
-
-        ```PowerShell
-        # Before
-        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/{alias-name}/B2CAssets/TrustFrameworkBase.xml
-        ```
-
-        たとえば、指定したエイリアスが "*policyRepo*" の場合、引数の行は次のようになります。
 
         ```PowerShell
-        # After
-        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/policyRepo/B2CAssets/TrustFrameworkBase.xml
+        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -Folder $(System.DefaultWorkingDirectory)/policyRepo/B2CAssets/ -Files "TrustFrameworkBase.xml,TrustFrameworkLocalization.xml,TrustFrameworkExtensions.xml,SignUpOrSignin.xml,ProfileEdit.xml,PasswordReset.xml"
         ```
-
+        
+        `-Files` パラメーターは、デプロイするポリシー ファイルのカンマ区切りリストです。 ポリシー ファイルを使用してリストを更新します。
+        
+        > [!IMPORTANT]
+        >  ポリシーが正しい順序でアップロードされることを確認します。 まず、基本ポリシー、拡張機能ポリシー、証明書利用者ポリシーの順です。 (例: `TrustFrameworkBase.xml,TrustFrameworkLocalization.xml,TrustFrameworkExtensions.xml,SignUpOrSignin.xml`)。
+        
 1. **[保存]** を選択して、エージェント ジョブを保存します。
-
-たった今追加したタスクによって、"*1 つの*" ポリシー ファイルが Azure AD B2C にアップロードされます。 続行する前に、手動でジョブをトリガー (**リリースを作成**) して、追加のタスクを作成する前に正常に完了することを確認します。
-
-タスクが正常に完了したら、カスタム ポリシー ファイルごとに上記の手順を実行して、デプロイ タスクを追加します。 各ポリシーの `-PolicyId` および `-PathToFile` 引数の値を変更します。
-
-`PolicyId` は、TrustFrameworkPolicy ノード内の XML ポリシー ファイルの先頭にある値です。 たとえば、次のポリシー XML の `PolicyId` は "*B2C_1A_TrustFrameworkBase*" です。
-
-```xml
-<TrustFrameworkPolicy
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
-PolicySchemaVersion="0.3.0.0"
-TenantId="contoso.onmicrosoft.com"
-PolicyId= "B2C_1A_TrustFrameworkBase"
-PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
-```
-
-エージェントを実行し、ポリシー ファイルをアップロードするときは、次の順序でアップロードされていることを確認します。
-
-1. *TrustFrameworkBase.xml*
-1. *TrustFrameworkExtensions.xml*
-1. *SignUpOrSignin.xml*
-1. *ProfileEdit.xml*
-1. *PasswordReset.xml*
-
-Identity Experience Framework では、ファイル構造が階層チェーンに基づいて構築されるため、この順序が適用されます。
 
 ## <a name="test-your-pipeline"></a>パイプラインをテストする
 
@@ -207,11 +196,12 @@ Identity Experience Framework では、ファイル構造が階層チェーン�
 
 リリースがキューに入れられたことを示す通知バナーが表示されます。 その状態を表示するには、通知バナー内のリンクを選択するか、 **[リリース]** タブの一覧から選択します。
 
+
 ## <a name="next-steps"></a>次のステップ
 
 各項目の詳細情報
 
-* [クライアント資格情報を使用したサービス間の呼び出し](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)
+* [クライアント資格情報を使用したサービス間の呼び出し](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)
 * [Azure DevOps Services](/azure/devops/user-guide/)
 
 <!-- LINKS - External -->

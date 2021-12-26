@@ -118,8 +118,4 @@ Bing Web Search API では 30 を超える国または地域がサポートさ�
 
 ## <a name="next-steps"></a>次の手順
 
-<<<<<<< HEAD
-* [Bing Image Search API リファレンス](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
-=======
 * [Bing Image Search API リファレンス](/rest/api/cognitiveservices/bing-images-api-v7-reference)
->>>>>>> repo_sync_working_branch

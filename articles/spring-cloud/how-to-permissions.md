@@ -35,12 +35,6 @@ ms.locfileid: "122015547"
     * アプリを再起動する
     * ログ ストリームを取得する
     * アプリや構成に変更を加えることはできない
-<<<<<<< HEAD
-* **Azure Pipelines/Jenkins/GitHub Actions ロール**:
-    * 作成、読み取り、更新、削除の操作を実行できる
-    * サービス インスタンス内にある Azure Spring Cloud とアプリで、すべてを作成し、構成できる:Terraform または ARM テンプレートを使用した Azure Pipelines、Jenkins、または GitHub Actions
-=======
->>>>>>> repo_sync_working_branch
 
 * **Azure Pipelines、Jenkins、GitHub Actions ロール**:
 
@@ -386,12 +380,7 @@ ms.locfileid: "122015547"
 
 ---
 
-<<<<<<< HEAD
-## <a name="define-azure-pipelinesprovisioning-role"></a>Azure Pipelines/プロビジョニング ロールを定義する
-この Jenkins/GitHub Actions ロールを使用すると、サービス インスタンス内にある Azure Spring Cloud とアプリで、すべてを作成し、構成することができます。 このロールは、コードをリリースまたはデプロイするためのものです。
-=======
 ## <a name="define-the-azure-pipelines--jenkins--github-actions-role"></a>Azure Pipelines、Jenkins、GitHub Actions ロールを定義する
->>>>>>> repo_sync_working_branch
 
 このロールでは、サービス インスタンス内にある Azure Spring Cloud とアプリで、すべてを作成し、構成できます。 このロールは、コードをリリースまたはデプロイするためのものです。
 

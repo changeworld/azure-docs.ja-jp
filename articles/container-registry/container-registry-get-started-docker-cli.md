@@ -19,11 +19,7 @@ ms.locfileid: "110062958"
 
 ## <a name="prerequisites"></a>前提条件
 
-<<<<<<< HEAD
-* **Azure Container Registry** - コンテナー レジストリは、Azure サブスクリプションに作成します。 たとえば、[Azure Portal](container-registry-get-started-portal.md) または [Azure CLI](container-registry-get-started-azure-cli.md) を使用します。
-=======
 * **Azure Container Registry** - コンテナー レジストリは、Azure サブスクリプションに作成します。 たとえば、[Azure portal](container-registry-get-started-portal.md)、[Azure CLI](container-registry-get-started-azure-cli.md)、または [Azure PowerShell](container-registry-get-started-powershell.md) を使用します。
->>>>>>> repo_sync_working_branch
 * **Docker CLI** - Docker もローカルにインストールする必要があります。 Docker では、[macOS][docker-mac]、[Windows][docker-windows]、または [Linux][docker-linux] システムで Docker を簡単に構成できるパッケージが提供されています。
 
 ## <a name="log-in-to-a-registry"></a>レジストリへのログイン
@@ -133,11 +129,8 @@ Nginx イメージが不要になった場合は、[docker rmi](https://docs.doc
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
-<<<<<<< HEAD
-=======
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
->>>>>>> repo_sync_working_branch
 Azure Container Registry からイメージを削除するには、Azure CLI コマンド [az acr repository delete](/cli/azure/acr/repository#az_acr_repository_delete) を使用できます。 たとえば、次のコマンドは、`samples/nginx:latest` タグによって参照されるマニフェスト、固有のレイヤー データ、およびそのマニフェストを参照するその他すべてのタグを削除します。
 
 ```azurecli
