@@ -7,86 +7,42 @@ author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
+ms.topic: portal
 ms.workload: identity
-ms.date: 09/25/2020
+ms.date: 11/22/2021
 ms.author: jmprieur
-ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: 0c648ae229db1ebe6ae50131c23e292c616b2820
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40, "scenarios:getting-started", "languages:ASP.NET", contperf-fy21q1, mode-other
+ms.openlocfilehash: 734003bb94b0d1ccd4e622b698feeb41120a6041
+ms.sourcegitcommit: 34d047300d800cf6ff7d9dd3e573a0d785f61abc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128633490"
+ms.lasthandoff: 01/12/2022
+ms.locfileid: "135919321"
 ---
 # <a name="quickstart-aspnet-web-app-that-signs-in-azure-ad-users"></a>クイック スタート: Azure AD ユーザーをサインインさせる ASP.NET Web アプリ
 
 このクイックスタートでは、ASP.NET Web アプリケーションで Azure Active Directory (Azure AD) アカウントを持つユーザーをサインインさせる方法を示すコード サンプルをダウンロードして実行します。
 
-> [!div renderon="docs"]
-> 次の図は、サンプル アプリの動作を示しています。
->
-> ![サンプル アプリにおける Web ブラウザー、Web アプリ、Microsoft ID プラットフォーム間の対話を表す図。](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
->
-> ## <a name="prerequisites"></a>前提条件
->
-> * アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
-> * [.NET Framework 4.7.2 以降](https://dotnet.microsoft.com/download/visual-studio-sdks)
->
-> ## <a name="register-and-download-the-app"></a>アプリを登録してダウンロードする
-> アプリケーションを作成するにあたっては、自動構成と手動構成という 2 つの選択肢があります。
->
-> ### <a name="automatic-configuration"></a>自動構成
-> アプリを自動的に構成したうえでコード サンプルをダウンロードする場合は、これらの手順に従います。
->
-> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">アプリの登録用の Azure portal ページ</a>に移動します。
-> 1. アプリケーションの名前を入力し、 **[登録]** を選択します。
-> 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
->
-> ### <a name="manual-configuration"></a>手動構成
-> アプリケーションとコードサンプルを手動で構成する場合は、次の手順を使用します。
->
-> #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
->
-> 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
-> 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリケーションを登録するテナントに切り替えます。
-> 1. **Azure Active Directory** を検索して選択します。
-> 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
-> 1. **[名前]** に、アプリケーションの名前を入力します。 たとえば、「**ASPNET-Quickstart**」と入力します。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
-> 1. **[リダイレクト URI]** に **https://localhost:44368/** を追加し、 **[登録]** を選択します。
-> 1. **[管理]** で、 **[認証]** を選択します。
-> 1. **[Implicit grant and hybrid flows]\(暗黙的な許可およびハイブリッド フロー\)** セクションで、 **[ID トークン]** を選択します。
-> 1. **[保存]** を選択します。
+#### <a name="step-1-configure-your-application-in-the-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
+このクイックスタートのコード サンプルを動作させるには、 **[リダイレクト URI]** に「 **https://localhost:44368/** 」と入力します。
 
-> [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
-> このクイックスタートのコード サンプルを動作させるには、 **[リダイレクト URI]** に「 **https://localhost:44368/** 」と入力します。
->
-> > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [この変更を行う]()
->
-> > [!div id="appconfigured" class="alert alert-info"]
-> > ![構成済み](media/quickstart-v2-aspnet-webapp/green-check.png) アプリケーションはこの属性で構成されています。
+> [!div class="nextstepaction"]
+> [この変更を行う]()
+
+> [!div class="alert alert-info"]
+> ![構成済み](media/quickstart-v2-aspnet-webapp/green-check.png) アプリケーションはこの属性で構成されています。
 
 #### <a name="step-2-download-the-project"></a>手順 2:プロジェクトのダウンロード
 
-> [!div renderon="docs"]
-> [Visual Studio 2019 ソリューションのダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
-
-> [!div renderon="portal" class="sxs-lookup"]
-> Visual Studio 2019 を使用してプロジェクトを実行します。
-> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
+Visual Studio 2019 を使用してプロジェクトを実行します。
+> [!div class="sxs-lookup nextstepaction"]
 > [コード サンプルをダウンロードします](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
 [!INCLUDE [active-directory-develop-path-length-tip](../../../includes/active-directory-develop-path-length-tip.md)]
 
-> [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>手順 3:アプリが構成され、実行準備ができる
-> アプリのプロパティの値を使用してプロジェクトを構成しました。
 
-> [!div renderon="docs"]
-> #### <a name="step-3-run-your-visual-studio-project"></a>手順 3:Visual Studio プロジェクトを実行する
+#### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>手順 3:アプリが構成され、実行準備ができる
+アプリのプロパティの値を使用してプロジェクトを構成しました。
 
 1. ルート フォルダーに近いローカル フォルダーに .zip ファイルを展開します。 たとえば、*C:\Azure-Samples* に展開します。
    
@@ -95,35 +51,17 @@ ms.locfileid: "128633490"
 3. Visual Studio のバージョンによっては、プロジェクト **AppModelv2-WebApp-OpenIDConnect-DotNet** を右クリックして **[NuGet パッケージの復元]** を選択することが必要になる場合があります。
 4. **[表示]**  >  **[その他のウィンドウ]**  >  **[パッケージ マネージャー コンソール]** を選択してパッケージ マネージャー コンソールを開きます。 次に、`Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r` を実行します。
 
-> [!div renderon="docs"]
-> 5. *[Web.config]* を編集し、`ClientId`、`Tenant`、`redirectUri` の各パラメーターを次のように置き換えます。
->    ```xml
->    <add key="ClientId" value="Enter_the_Application_Id_here" />
->    <add key="Tenant" value="Enter_the_Tenant_Info_Here" />
->    <add key="redirectUri" value="https://localhost:44368/" />
->    ```
->    このコードでは:
->
->    - `Enter_the_Application_Id_here` は、先ほど作成したアプリの登録のアプリケーション (クライアント) ID です。 Azure portal の **[アプリの登録]** にあるアプリの **[概要]** ページで、アプリケーション (クライアント) ID を見つけます。
->    - `Enter_the_Tenant_Info_Here` には、次のいずれかを選択します。
->      - アプリケーションでサポートされるのが **[所属する組織のみ]** である場合、この値をディレクトリ (テナント) ID またはテナント名 (例: `contoso.onmicrosoft.com`) に置き換えます。 Azure portal の **[アプリの登録]** にあるアプリの **[概要]** ページで、ディレクトリ (テナント) ID を見つけます。
->      - アプリケーションで **任意の組織のディレクトリ内のアカウント** がサポートされる場合は、この値を `organizations` に置き換えます。
->      - アプリケーションで **[すべての Microsoft アカウント ユーザー]** がサポートされる場合は、この値を `common` に置き換えます。
->    - `redirectUri` は、先ほど Azure portal の **[アプリの登録]** で入力した **リダイレクト URI** です。
->
-
-> [!div class="sxs-lookup" renderon="portal"]
-> > [!NOTE]
-> > `Enter_the_Supported_Account_Info_Here`
+> [!NOTE]
+> `Enter_the_Supported_Account_Info_Here`
 
 ## <a name="more-information"></a>詳細情報
 
 このセクションでは、ユーザーをサインインさせるために必要なコードの概要を示します。 この概要は、コードの働きや主な引数、また既存の ASP.NET アプリケーションにサインインを追加する方法を理解するうえで役立ちます。
 
-> [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="how-the-sample-works"></a>このサンプルのしくみ
->
-> ![サンプル アプリにおける Web ブラウザー、Web アプリ、Microsoft ID プラットフォーム間の対話を表す図。](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
+
+### <a name="how-the-sample-works"></a>このサンプルのしくみ
+
+![サンプル アプリにおける Web ブラウザー、Web アプリ、Microsoft ID プラットフォーム間の対話を表す図。](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
 
 ### <a name="owin-middleware-nuget-packages"></a>OWIN ミドルウェア NuGet パッケージ
 
