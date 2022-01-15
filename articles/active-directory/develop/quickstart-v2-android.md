@@ -7,17 +7,17 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
+ms.topic: portal
 ms.workload: identity
-ms.date: 10/15/2019
+ms.date: 01/14/2022
 ms.author: marsma
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android, has-adal-ref
-ms.openlocfilehash: 794e173bdd1dd70873cd17f64ac4f24022bd738c
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.custom: aaddev, identityplatformtop40, "scenarios:getting-started", "languages:Android", has-adal-ref, mode-api
+ms.openlocfilehash: 5d6285b173d023cc6a381ddfe9842d620f73da4a
+ms.sourcegitcommit: 04420fb4695bd70408d9854ad5b2af8a9bbfbc64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429084"
+ms.lasthandoff: 01/15/2022
+ms.locfileid: "136846349"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>クイック スタート:Android アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
 
@@ -33,62 +33,40 @@ ms.locfileid: "122429084"
 * Android Studio
 * Android 16 以降
 
-> [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="step-1-configure-your-application-in-the-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
-> このクイックスタートのコード サンプルを動作させるには、Auth ブローカーと互換性のある **リダイレクト URI** を追加します。
-> > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [これらの変更を行います]()
->
-> > [!div id="appconfigured" class="alert alert-info"]
-> > ![構成済み](media/quickstart-v2-android/green-check.png) アプリケーションはこれらの属性で構成されています
->
-> ### <a name="step-2-download-the-project"></a>手順 2:プロジェクトのダウンロード
-> [!div class="sxs-lookup" renderon="portal"]
-> Android Studio を使用してプロジェクトを実行します。
-> [!div class="sxs-lookup" renderon="portal" id="autoupdate" class="nextstepaction"]
-> [コード サンプルをダウンロードします](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
->
-> [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>手順 3:アプリが構成され、実行準備ができる
-> アプリのプロパティの値を使用してプロジェクトを構成したら、実行する準備は完了です。
-> このサンプル アプリは、**単一アカウント モード** 画面で開始します。 既定のスコープである **user.read** は既定で指定されます。これは、Microsoft Graph API 呼び出し時にご自分のプロファイル データを読み取るときに使用します。 Microsoft Graph API 呼び出しの URL は、既定で指定されます。 このどちらも必要に応じて変更できます。
->
-> ![単一および複数アカウントの使用状況を示す MSAL サンプル アプリ](./media/quickstart-v2-android/quickstart-sample-app.png)
->
-> 単一と複数アカウント モードを切り替えるには、アプリのメニューを使用します。
->
-> 単一アカウント モードで、職場またはホーム アカウントを使用してサインインします。
->
-> 1. **[Get graph data interactively]\(グラフ データを対話形式で取得する\)** を選択して、ユーザーに資格情報の入力を求めます。 Microsoft Graph API の呼び出しからの出力が画面の下部に表示されます。
-> 2. サインインしたら、 **[Get graph data silently]\(グラフ データをサイレントで取得する\)** を選択して、ユーザーに資格情報の入力を再度求めることなく、Microsoft Graph API を呼び出します。 Microsoft Graph API の呼び出しからの出力が画面の下部に表示されます。
->
-> 複数アカウント モードでは、同じ手順を繰り返すことができます。  さらに、サインインしているアカウントを削除することもできます。その場合、そのアカウントのキャッシュされたトークンも削除されます。
+### <a name="step-1-configure-your-application-in-the-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
+このクイックスタートのコード サンプルを動作させるには、Auth ブローカーと互換性のある **リダイレクト URI** を追加します。
+> [!div class="nextstepaction"]
+> [これらの変更を行います]()
 
-> [!div class="sxs-lookup" renderon="portal"]
+> [!div class="alert alert-info"]
+> ![構成済み](media/quickstart-v2-android/green-check.png) アプリケーションはこれらの属性で構成されています
+
+### <a name="step-2-download-the-project"></a>手順 2:プロジェクトのダウンロード
+
+Android Studio を使用してプロジェクトを実行します。
+> [!div class="nextstepaction"]
+> [コード サンプルをダウンロードします](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
+
+
+### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>手順 3:アプリが構成され、実行準備ができる
+
+アプリのプロパティの値を使用してプロジェクトを構成したら、実行する準備は完了です。
+このサンプル アプリは、**単一アカウント モード** 画面で開始します。 既定のスコープである **user.read** は既定で指定されます。これは、Microsoft Graph API 呼び出し時にご自分のプロファイル データを読み取るときに使用します。 Microsoft Graph API 呼び出しの URL は、既定で指定されます。 このどちらも必要に応じて変更できます。
+
+![単一および複数アカウントの使用状況を示す MSAL サンプル アプリ](./media/quickstart-v2-android/quickstart-sample-app.png)
+
+単一と複数アカウント モードを切り替えるには、アプリのメニューを使用します。
+
+単一アカウント モードで、職場またはホーム アカウントを使用してサインインします。
+
+1. **[Get graph data interactively]\(グラフ データを対話形式で取得する\)** を選択して、ユーザーに資格情報の入力を求めます。 Microsoft Graph API の呼び出しからの出力が画面の下部に表示されます。
+2. サインインしたら、 **[Get graph data silently]\(グラフ データをサイレントで取得する\)** を選択して、ユーザーに資格情報の入力を再度求めることなく、Microsoft Graph API を呼び出します。 Microsoft Graph API の呼び出しからの出力が画面の下部に表示されます。
+
+複数アカウント モードでは、同じ手順を繰り返すことができます。  さらに、サインインしているアカウントを削除することもできます。その場合、そのアカウントのキャッシュされたトークンも削除されます。
+
+> [!div class="sxs-lookup"]
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
-
-> [!div renderon="docs"]
-> ## <a name="step-1-get-the-sample-app"></a>手順 1:サンプル アプリを入手する
->
-> [コードをダウンロードします](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)。
->
-> ## <a name="step-2-run-the-sample-app"></a>手順 2:サンプル アプリを実行する
->
-> Android Studio の **[available devices]\(使用可能なデバイス\)** ドロップダウンからエミュレーターまたは物理デバイスを選択し、アプリを実行します。
->
-> このサンプル アプリは、**単一アカウント モード** 画面で開始します。 既定のスコープである **user.read** は既定で指定されます。これは、Microsoft Graph API 呼び出し時にご自分のプロファイル データを読み取るときに使用します。 Microsoft Graph API 呼び出しの URL は、既定で指定されます。 このどちらも必要に応じて変更できます。
->
-> ![単一および複数アカウントの使用状況を示す MSAL サンプル アプリ](./media/quickstart-v2-android/quickstart-sample-app.png)
->
-> 単一と複数アカウント モードを切り替えるには、アプリのメニューを使用します。
->
-> 単一アカウント モードで、職場またはホーム アカウントを使用してサインインします。
->
-> 1. **[Get graph data interactively]\(グラフ データを対話形式で取得する\)** を選択して、ユーザーに資格情報の入力を求めます。 Microsoft Graph API の呼び出しからの出力が画面の下部に表示されます。
-> 2. サインインしたら、 **[Get graph data silently]\(グラフ データをサイレントで取得する\)** を選択して、ユーザーに資格情報の入力を再度求めることなく、Microsoft Graph API を呼び出します。 Microsoft Graph API の呼び出しからの出力が画面の下部に表示されます。
->
-> 複数アカウント モードでは、同じ手順を繰り返すことができます。  さらに、サインインしているアカウントを削除することもできます。その場合、そのアカウントのキャッシュされたトークンも削除されます。
 
 ## <a name="how-the-sample-works"></a>このサンプルのしくみ
 ![サンプル アプリのスクリーンショット](media/quickstart-v2-android/android-intro.svg)

@@ -7,17 +7,17 @@ author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
+ms.topic: portal
 ms.workload: identity
-ms.date: 10/05/2020
+ms.date: 01/11/2022
 ms.author: jmprieur
-ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 79557d889e4942c7cb7e4ae849b1da84c12a3712
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40, "scenarios:getting-started", "languages:ASP.NET", mode-api
+ms.openlocfilehash: 57bcd6562862210be21c17680842de44168c435b
+ms.sourcegitcommit: 04420fb4695bd70408d9854ad5b2af8a9bbfbc64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748729"
+ms.lasthandoff: 01/15/2022
+ms.locfileid: "136847814"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームによって保護されている ASP.NET Web API を呼び出す
 
@@ -48,7 +48,7 @@ ms.locfileid: "108748729"
 
 Azure portal の **[アプリの登録]** で Web API を登録します。
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
 1. **Azure Active Directory** を検索して選択します。
 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
@@ -132,13 +132,23 @@ TodoListClient アプリを登録するには、これらの手順に従いま�
 
 1. TodoListClient プロジェクトのルート フォルダーで *app.config* ファイルを開き、アプリケーション ID の値を `ida:ClientId` パラメーターに貼り付けます。
 
-## <a name="run-your-todolistclient-project"></a>TodoListClient プロジェクトを実行する
+## <a name="run-your-projects"></a>プロジェクトの実行
+
+両方のプロジェクトを開始します。 Visual Studio を使用している場合は次の手順に従います。
+
+1. Visual Studio ソリューションを右クリックし、**[プロパティ]** を選択します。
+
+1. **[共通プロパティ]** で、**[スタートアップ プロジェクト]**、**[マルチ スタートアップ プロジェクト]** の順に選択します。 
+
+1. 両方のプロジェクトに対して、アクションとして **[Start]\(開始\)** を選択します。
+
+1. 上向きの矢印を使用して TodoListService サービスを一覧の最初の位置に移動し、最初に開始されるようにします。
 
 TodoListClient プロジェクトにサインインして実行します。
 
-1. F5 キーを押して TodoListClient プロジェクトを開きます。 プロジェクト ページが表示されます。
+1. F5 キーを押して、プロジェクトを開始します。 サービスのページと、デスクトップ アプリケーションが開きます。
 
-1. 右上にある **[サインイン]** を選択し、アプリケーションの登録に使用したのと同じ資格情報でサインインするか、同じディレクトリ内のユーザーとしてサインインします。
+1. TodoListClient の右上にある **[サインイン]** を選択し、アプリケーションの登録に使用したのと同じ資格情報でサインインするか、同じディレクトリ内のユーザーとしてサインインします。
 
    初めてサインインする場合は、TodoListService Web API に同意するように求められることがあります。
 

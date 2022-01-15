@@ -7,15 +7,16 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
-ms.date: 02/17/2021
+ms.topic: portal
+ms.date: 01/10/2022
 ms.author: marsma
-ms.openlocfilehash: 9a75435ca75e5d6638315f3c96716c091048694f
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.custom: mode-api
+ms.openlocfilehash: eeb50fc335835dcc2765c894e151f39cccbf25e4
+ms.sourcegitcommit: b55c580fe2bb9fbf275ddf414d547ddde8d71d8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131502070"
+ms.lasthandoff: 01/14/2022
+ms.locfileid: "136834869"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-nodejs-console-app-using-apps-identity"></a>クイックスタート: トークンを取得し、Node.js コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す
 
@@ -28,84 +29,33 @@ ms.locfileid: "131502070"
 * [Node.js](https://nodejs.org/en/download/)
 * [Visual Studio Code](https://code.visualstudio.com/download) または別のコード エディター
 
-> [!div renderon="docs"]
-> ## <a name="register-and-download-the-sample-application"></a>サンプル アプリケーションを登録してダウンロードする
->
-> まず、以下の手順に従ってください。
->
-> [!div renderon="docs"]
-> #### <a name="step-1-register-the-application"></a>手順 1:アプリケーションを登録する
-> アプリケーションを登録し、その登録情報をソリューションに手動で追加するには、次の手順を実行します。
->
-> 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
-> 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリケーションを登録するテナントに切り替えます。
-> 1. **Azure Active Directory** を検索して選択します。
-> 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
-> 1. アプリケーションの **名前** を入力します (例: `msal-node-cli`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
-> 1. **[登録]** を選択します。
-> 1. **[管理]** で、 **[証明書とシークレット]** を選択します。
-> 1. **[クライアント シークレット]** で、 **[新しいクライアント シークレット]** を選択し、名前を入力して、 **[追加]** を選択します。 後の手順で使用できるように、シークレットの値を安全な場所に記録します。
-> 1. **[管理]** で、 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。 **[Microsoft Graph]** を選択します。
-> 1. **[アプリケーションのアクセス許可]** を選択します。
-> 1. **[ユーザー]** ノードで、 **[User.Read.All]** を選択し、 **[アクセス許可の追加]** を選択します。
 
-> [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="download-and-configure-the-sample-app"></a>サンプル アプリをダウンロードして構成する
->
-> #### <a name="step-1-configure-the-application-in-azure-portal"></a>手順 1: Azure portal でのアプリケーションの構成
-> このクイック スタート用サンプル コードを動作させるには、クライアント シークレットを作成し、Graph API の **User.Read.All** アプリケーションのアクセス許可を追加します。
-> > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [これらの変更を行います]()
->
-> > [!div id="appconfigured" class="alert alert-info"]
-> > ![構成済み](media/quickstart-v2-netcore-daemon/green-check.png) アプリケーションはこれらの属性で構成されています。
+### <a name="download-and-configure-the-sample-app"></a>サンプル アプリをダウンロードして構成する
+
+#### <a name="step-1-configure-the-application-in-azure-portal"></a>手順 1: Azure portal でのアプリケーションの構成
+このクイック スタート用サンプル コードを動作させるには、クライアント シークレットを作成し、Graph API の **User.Read.All** アプリケーションのアクセス許可を追加します。
+> [!div class="nextstepaction"]
+> [これらの変更を行います]()
+
+> [!div class="alert alert-info"]
+> ![構成済み](media/quickstart-v2-netcore-daemon/green-check.png) アプリケーションはこれらの属性で構成されています。
 
 #### <a name="step-2-download-the-nodejs-sample-project"></a>手順 2: Node.js サンプル プロジェクトをダウンロードする
 
-> [!div renderon="docs"]
+> [!div class="sxs-lookup nextstepaction"]
 > [コード サンプルをダウンロードします](https://github.com/azure-samples/ms-identity-javascript-nodejs-console/archive/main.zip)
 
-> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
-> [コード サンプルをダウンロードします](https://github.com/azure-samples/ms-identity-javascript-nodejs-console/archive/main.zip)
-
-> [!div class="sxs-lookup" renderon="portal"]
+> [!div class="sxs-lookup"]
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
 
-> [!div renderon="docs"]
-> #### <a name="step-3-configure-the-nodejs-sample-project"></a>手順 3: Node.js サンプル プロジェクトを構成する
->
-> 1. ディスクのルートに近いローカル フォルダー (例: *C:/Azure-Samples*) に ZIP ファイルを展開します。
-> 1. *.env* を編集し、`TENANT_ID`、`CLIENT_ID`、`CLIENT_SECRET` の各フィールドの値を次のスニペットに置き換えます。
->
->    ```
->    "TENANT_ID": "Enter_the_Tenant_Id_Here",
->    "CLIENT_ID": "Enter_the_Application_Id_Here",
->    "CLIENT_SECRET": "Enter_the_Client_Secret_Here"
->    ```
->    各値の説明:
->    - `Enter_the_Application_Id_Here` - 前に登録したアプリケーションの **アプリケーション (クライアント) ID**。 この ID は、Azure portal からアプリの登録の **[概要]** ペインで確認できます。
->    - `Enter_the_Tenant_Id_Here` - この値を **テナント ID** または **テナント名** (例: contoso.microsoft.com) に置き換えます。  これらの値は、Azure portal からアプリの登録の **[概要]** ペインで確認できます。
->    - `Enter_the_Client_Secret_Here` - この値を、前に作成したクライアント シークレットに置き換えます。 新しいキーを生成するには、Azure portal でアプリの登録設定の **[証明書とシークレット]** を使用します。
->
-> > [!WARNING]
-> > ソース コードでシークレットがプレーンテキストになっていると、セキュリティ リスクが増大します。 この記事でプレーンテキストのクライアント シークレットを使用しているのは、あくまで簡潔にするためです。 機密性の高いクライアント アプリケーション、特に運用環境へのデプロイを予定しているアプリでは、クライアント シークレットではなく、[証明書の資格情報](active-directory-certificate-credentials.md)を使用してください。
-
-> [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-3-admin-consent"></a>手順 3:管理者の同意
-
-> [!div renderon="docs"]
-> #### <a name="step-4-admin-consent"></a>手順 4:管理者の同意
+#### <a name="step-3-admin-consent"></a>手順 3:管理者の同意
 
 この時点でアプリケーションを実行すると、*HTTP 403 - Forbidden* エラー "`Insufficient privileges to complete the operation`" が表示されます。 これは、すべての "*アプリ専用のアクセス許可*" には **管理者の同意** が必要であるために発生します。ディレクトリのグローバル管理者にお使いのアプリケーションに同意してもらう必要があります。 ご自身のロールに応じて、次のオプションのいずれかを選択します。
 
 ##### <a name="global-tenant-administrator"></a>グローバル テナント管理者
 
-> [!div renderon="docs"]
-> グローバル テナント管理者の場合は、Azure portal 上で [アプリケーションの登録] の **[API のアクセス許可]** ページに移動し、 **[<Tenant Name> に管理者の同意を与えます]** (<Tenant Name> はお使いのディレクトリの名前) を選択します。
-
-> [!div renderon="portal" class="sxs-lookup"]
-> グローバル管理者の場合は、 **[API のアクセス許可]** ページに移動し、 **[Enter_the_Tenant_Name_Here に管理者の同意を与えます]** を選択します。
+グローバル管理者の場合は、 **[API のアクセス許可]** ページに移動し、 **[Enter_the_Tenant_Name_Here に管理者の同意を与えます]** を選択します。
 > > [!div id="apipermissionspage"]
 > > [[API のアクセス許可] ページに移動する]()
 
@@ -117,16 +67,7 @@ ms.locfileid: "131502070"
 https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_id=Enter_the_Application_Id_Here
 ```
 
-> [!div renderon="docs"]
->> 各値の説明:
->> * `Enter_the_Tenant_Id_Here` - この値を **テナント ID** または **テナント名** (例: contoso.microsoft.com) に置き換えます。
->> * `Enter_the_Application_Id_Here` - 登録したアプリケーションの **アプリケーション (クライアント) ID**。
-
-> [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-4-run-the-application"></a>手順 4:アプリケーションの実行
-
-> [!div renderon="docs"]
-> #### <a name="step-5-run-the-application"></a>手順 5:アプリケーションの実行
+#### <a name="step-4-run-the-application"></a>手順 4:アプリケーションの実行
 
 コマンド プロンプトまたはコンソールで、(`package.json` が存在する) サンプルのルート フォルダーを探します。 このサンプルの依存関係を 1 回インストールする必要があります。
 

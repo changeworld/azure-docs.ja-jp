@@ -7,81 +7,80 @@ author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
+ms.topic: portal
 ms.workload: identity
-ms.date: 09/22/2020
+ms.date: 01/11/2022
 ms.author: jmprieur
-ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: f70c35f55256ef98dd261a13058f1b6ad5330d9f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: devx-track-csharp, "scenarios:getting-started", "languages:aspnet-core", mode-api
+ms.openlocfilehash: c30b50ae0f5eb92f21232096e032a214ec05e316
+ms.sourcegitcommit: 04420fb4695bd70408d9854ad5b2af8a9bbfbc64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128616804"
+ms.lasthandoff: 01/15/2022
+ms.locfileid: "136846747"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-the-microsoft-identity-platform"></a>クイックスタート:Microsoft ID プラットフォームを使用して ASP.NET Core Web API を保護する
 
 このクイックスタートでは、ASP.NET Core Web API コード サンプルをダウンロードし、リソース アクセスを承認されたアカウントだけに制限する方法を確認します。 このサンプルでは、個人用 Microsoft アカウントと Azure Active Directory (Azure AD) 組織のアカウントの承認がサポートされています。
 
-> [!div renderon="docs"]
-> ## <a name="prerequisites"></a>前提条件
->
-> - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-> - [Azure Active Directory テナント](quickstart-create-new-tenant.md)
-> - [.NET Core SDK 3.1 以降](https://dotnet.microsoft.com/)
-> - [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) または [Visual Studio Code](https://code.visualstudio.com/)
->
-> ## <a name="step-1-register-the-application"></a>手順 1:アプリケーションを登録する
->
-> まず、次の手順に従って、Azure AD テナントに Web API を登録し、スコープを追加します。
->
-> 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
-> 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリケーションを登録するテナントに切り替えます。
-> 1. **Azure Active Directory** を検索して選択します。
-> 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
-> 1. **[名前]** に、アプリケーションの名前を入力します。 たとえば、「**AspNetCoreWebApi-Quickstart**」と入力します。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
-> 1. **[登録]** を選択します。
-> 1. **[管理]** で、 **[API の公開]**  >  **[スコープの追加]** の順に選択します。 **[アプリケーション ID URI]** は既定値のままにして **[保存して続行]** を選択し、以下の詳細を入力します。
->    - **スコープ名**: `access_as_user`
->    - **同意できるのはだれですか?** : **管理者とユーザー**
->    - **管理者の同意の表示名**: `Access AspNetCoreWebApi-Quickstart`
->    - **管理者の同意の説明**: `Allows the app to access AspNetCoreWebApi-Quickstart as the signed-in user.`
->    - **ユーザーの同意の表示名**: `Access AspNetCoreWebApi-Quickstart`
->    - **ユーザーの同意の説明**: `Allow the application to access AspNetCoreWebApi-Quickstart on your behalf.`
->    - **[状態]** :**有効**
-> 1. **[スコープの追加]** を選択してスコープの追加を完了します。
+
+## <a name="prerequisites"></a>前提条件
+
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- [Azure Active Directory テナント](quickstart-create-new-tenant.md)
+- [.NET Core SDK 3.1 以降](https://dotnet.microsoft.com/)
+- [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) または [Visual Studio Code](https://code.visualstudio.com/)
+
+## <a name="step-1-register-the-application"></a>手順 1:アプリケーションを登録する
+
+まず、次の手順に従って、Azure AD テナントに Web API を登録し、スコープを追加します。
+
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリケーションを登録するテナントに切り替えます。
+1. **Azure Active Directory** を検索して選択します。
+1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
+1. **[名前]** に、アプリケーションの名前を入力します。 たとえば、「**AspNetCoreWebApi-Quickstart**」と入力します。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
+1. **[登録]** を選択します。
+1. **[管理]** で、 **[API の公開]**  >  **[スコープの追加]** の順に選択します。 **[アプリケーション ID URI]** は既定値のままにして **[保存して続行]** を選択し、以下の詳細を入力します。
+    - **スコープ名**: `access_as_user`
+   - **同意できるのはだれですか?** : **管理者とユーザー**
+   - **管理者の同意の表示名**: `Access AspNetCoreWebApi-Quickstart`
+   - **管理者の同意の説明**: `Allows the app to access AspNetCoreWebApi-Quickstart as the signed-in user.`
+   - **ユーザーの同意の表示名**: `Access AspNetCoreWebApi-Quickstart`
+   - **ユーザーの同意の説明**: `Allow the application to access AspNetCoreWebApi-Quickstart on your behalf.`
+   - **[状態]** :**有効**
+1. **[スコープの追加]** を選択してスコープの追加を完了します。
 
 ## <a name="step-2-download-the-aspnet-core-project"></a>手順 2:ASP.NET Core プロジェクトをダウンロードする
 
-> [!div renderon="docs"]
-> GitHub から [ASP.NET Core ソリューションをダウンロード](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/archive/aspnetcore3-1.zip)します。
+GitHub から [ASP.NET Core ソリューションをダウンロード](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/archive/aspnetcore3-1.zip)します。
 
 [!INCLUDE [active-directory-develop-path-length-tip](../../../includes/active-directory-develop-path-length-tip.md)]
 
-> [!div renderon="docs"]
-> ## <a name="step-3-configure-the-aspnet-core-project"></a>手順 3:ASP.NET Core プロジェクトを構成する
->
-> この手順では、前に作成したアプリの登録を操作するようにサンプル コードを構成します。
->
-> 1. .zip アーカイブを、ドライブのルート付近にあるフォルダーに抽出します。 たとえば、*C:\Azure-Samples* に展開します。
->
->    Windows におけるパスの長さの制限に起因したエラーを防ぐため、ドライブのルートに近いディレクトリをアーカイブの展開先とすることをお勧めします。
->
-> 1. コード エディターで *webapi* フォルダーにあるソリューションを開きます。
-> 1. *appsettings.json* ファイルを開き、次のコードを変更します。
->
->    ```json
->    "ClientId": "Enter_the_Application_Id_here",
->    "TenantId": "Enter_the_Tenant_Info_Here"
->    ```
->
->    - `Enter_the_Application_Id_here` を、Azure portal で登録したアプリケーションのアプリケーション (クライアント) ID に置き換えます。 アプリケーション (クライアント) ID は、アプリの **[概要]** ページで確認できます。
->    - `Enter_the_Tenant_Info_Here` を、次のいずれかに置き換えます。
->       - アプリケーションで **[この組織のディレクトリ内のアカウントのみ]** がサポートされている場合は、この値をディレクトリ (テナント) ID (GUID) またはテナント名 (例: `contoso.onmicrosoft.com`) に置き換えます。 ディレクトリ (テナント) ID は、アプリの **[概要]** ページで確認できます。
->       - アプリケーションで **任意の組織のディレクトリ内のアカウント** がサポートされる場合は、この値を `organizations` に置き換えます。
->       - アプリケーションで **[すべての Microsoft アカウント ユーザー]** がサポートされている場合は、この値を `common` のままにします。
->
-> このクイックスタートでは、*appsettings.json* ファイル内のその他の値は変更しないでください。
+
+## <a name="step-3-configure-the-aspnet-core-project"></a>手順 3:ASP.NET Core プロジェクトを構成する
+
+この手順では、前に作成したアプリの登録を操作するようにサンプル コードを構成します。
+
+1. .zip アーカイブを、ドライブのルート付近にあるフォルダーに抽出します。 たとえば、*C:\Azure-Samples* に展開します。
+
+   Windows におけるパスの長さの制限に起因したエラーを防ぐため、ドライブのルートに近いディレクトリをアーカイブの展開先とすることをお勧めします。
+
+1. コード エディターで *webapi* フォルダーにあるソリューションを開きます。
+1. *appsettings.json* ファイルを開き、次のコードを変更します。
+
+   ```json
+   "ClientId": "Enter_the_Application_Id_here",
+   "TenantId": "Enter_the_Tenant_Info_Here"
+   ```
+
+   - `Enter_the_Application_Id_here` を、Azure portal で登録したアプリケーションのアプリケーション (クライアント) ID に置き換えます。 アプリケーション (クライアント) ID は、アプリの **[概要]** ページで確認できます。
+   - `Enter_the_Tenant_Info_Here` を、次のいずれかに置き換えます。
+      - アプリケーションで **[この組織のディレクトリ内のアカウントのみ]** がサポートされている場合は、この値をディレクトリ (テナント) ID (GUID) またはテナント名 (例: `contoso.onmicrosoft.com`) に置き換えます。 ディレクトリ (テナント) ID は、アプリの **[概要]** ページで確認できます。
+      - アプリケーションで **任意の組織のディレクトリ内のアカウント** がサポートされる場合は、この値を `organizations` に置き換えます。
+      - アプリケーションで **[すべての Microsoft アカウント ユーザー]** がサポートされている場合は、この値を `common` のままにします。
+
+このクイックスタートでは、*appsettings.json* ファイル内のその他の値は変更しないでください。
 
 ## <a name="how-the-sample-works"></a>このサンプルのしくみ
 
