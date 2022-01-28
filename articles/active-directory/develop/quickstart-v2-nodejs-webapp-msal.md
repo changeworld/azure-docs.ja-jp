@@ -7,19 +7,19 @@ author: mmacy
 manager: celested
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
+ms.topic: portal
 ms.workload: identity
-ms.date: 10/22/2020
+ms.date: 11/22/2021
 ms.author: marsma
-ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: a593aef3ff99edb498e899b0d8db46c7b4636683
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.custom: aaddev, "scenarios:getting-started", "languages:js", devx-track-js, mode-api
+ms.openlocfilehash: 07b5610a057393cbad2c6123f04a3e9e37782d1c
+ms.sourcegitcommit: 34d047300d800cf6ff7d9dd3e573a0d785f61abc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131427705"
+ms.lasthandoff: 01/12/2022
+ms.locfileid: "135929735"
 ---
-# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>クイックスタート: 認証コード フローを使用して Node.js Web アプリ内でユーザーをサインインさせ、アクセス トークンを取得する
+# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-nodejs-web-app-using-the-auth-code-flow"></a>クイックスタート: 認証コード フローを使用して Node.js Web アプリ内でユーザーをサインインさせ、アクセス トークンを取得する
 
 このクイックスタートでは、Node.js Web アプリで認可コード フローを使用してユーザーのサインインを処理する方法を示すコード サンプルをダウンロードして実行します。 このコード サンプルでは、Microsoft Graph API を呼び出すためのアクセス トークンを取得する方法も示します。
 
@@ -33,91 +33,22 @@ ms.locfileid: "131427705"
 * [Node.js](https://nodejs.org/en/download/)
 * [Visual Studio Code](https://code.visualstudio.com/download) または別のコード エディター
 
-> [!div renderon="docs"]
-> ## <a name="register-and-download-your-quickstart-application"></a>クイック スタート アプリケーションを登録してダウンロードする
->
-> #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
->
-> 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
-> 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリケーションを登録するテナントに切り替えます。
-> 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
-> 1. アプリケーションの **[名前]** を入力します。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
-> 1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
-> 1. **[リダイレクト URI]** の値を `http://localhost:3000/redirect` に設定します。
-> 1. **[登録]** を選択します。
-> 1. 後で使用するために、アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を書き留めます。
-> 1. **[管理]** で、 **[証明書とシークレット]**  >  **[クライアント シークレット]**  >  **[新しいクライアント シークレット]** の順に選択します。  説明を空白のままにし、既定の有効期限をそのままにして、 **[追加]** を選択します。
-> 1. 後で使用するために、 **[クライアント シークレット]** の値を書き留めます。
+#### <a name="step-1-configure-the-application-in-azure-portal"></a>手順 1: Azure portal でのアプリケーションの構成
+このクイックスタートのサンプル コードを動作させるには、クライアント シークレットを作成して、応答 URL として `http://localhost:3000/redirect` を追加する必要があります。
+> [!div class="nextstepaction"]
+> [この変更を行う]()
 
-> [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-the-application-in-azure-portal"></a>手順 1: Azure portal でのアプリケーションの構成
-> このクイックスタートのサンプル コードを動作させるには、クライアント シークレットを作成して、応答 URL として `http://localhost:3000/redirect` を追加する必要があります。
-> > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [この変更を行う]()
->
-> > [!div id="appconfigured" class="alert alert-info"]
-> > ![構成済み](media/quickstart-v2-windows-desktop/green-check.png) アプリケーションはこれらの属性で構成されています。
+> [!div class="alert alert-info"]
+> ![構成済み](media/quickstart-v2-windows-desktop/green-check.png) アプリケーションはこれらの属性で構成されています。
 
 #### <a name="step-2-download-the-project"></a>手順 2:プロジェクトのダウンロード
 
-> [!div renderon="docs"]
-> Node.js を使用して Web サーバーでプロジェクトを実行するために、[コア プロジェクト ファイルをダウンロード](https://github.com/Azure-Samples/ms-identity-node/archive/main.zip)します。
+Node.js を使用して Web サーバーでプロジェクトを実行します。
 
-> [!div renderon="portal" class="sxs-lookup"]
-> Node.js を使用して Web サーバーでプロジェクトを実行します。
-
-> [!div renderon="portal" class="sxs-lookup" id="autoupdate" class="nextstepaction"]
+> [!div class="nextstepaction"]
 > [コード サンプルをダウンロードします](https://github.com/Azure-Samples/ms-identity-node/archive/main.zip)
 
-> [!div renderon="docs"]
-> #### <a name="step-3-configure-your-node-app"></a>手順 3:Node アプリの構成
->
-> プロジェクトを展開します。*ms-identity-node-main* フォルダーを開き、*index.js* ファイルを開きます。
->
-> アプリケーション (クライアント) ID を使用して `clientID` の値を設定し、クライアント シークレットを使用して `clientSecret` の値を設定します。
->
->```javascript
->const config = {
->    auth: {
->        clientId: "Enter_the_Application_Id_Here",
->        authority: "https://login.microsoftonline.com/common",
->        clientSecret: "Enter_the_Client_Secret_Here"
->    },
->    system: {
->        loggerOptions: {
->            loggerCallback(loglevel, message, containsPii) {
->                console.log(message);
->            },
->            piiLoggingEnabled: false,
->            logLevel: msal.LogLevel.Verbose,
->        }
->    }
->};
-> ```
-
-> [!div renderon="docs"]
->
-> `config` セクションの値を変更します。
->
-> - `Enter_the_Application_Id_Here` は、登録したアプリケーションのアプリケーション (クライアント) ID です。
->
->    アプリケーション (クライアント) ID を見つけるには、Azure portal でアプリ登録の **[概要]** ページに移動します。
-> - `Enter_the_Client_Secret_Here` は、登録したアプリケーションのクライアント シークレットです。
->
->    新しいクライアント シークレットを取得または生成するには、 **[管理]** で、 **[証明書とシークレット]** を選択します。
->
-> 既定値の `authority` は、メイン (グローバル) Azure クラウドを表します。
->
-> ```javascript
-> authority: "https://login.microsoftonline.com/common",
-> ```
->
-> [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>手順 3:アプリが構成され、実行準備ができる
->
-> [!div renderon="docs"]
->
-> #### <a name="step-4-run-the-project"></a>手順 4:プロジェクトを実行する
+#### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>手順 3:アプリが構成され、実行準備ができる
 
 Node.js を使用してプロジェクトを実行します。
 

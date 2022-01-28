@@ -7,17 +7,17 @@ author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
+ms.topic: portal
 ms.workload: identity
-ms.date: 05/17/2021
+ms.date: 11/22/2021
 ms.author: jmprieur
-ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 244736501dbd9a996ddb89159f0a7289244e51b1
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.custom: devx-track-csharp, aaddev, "scenarios:getting-started", "languages:aspnet-core", mode-other
+ms.openlocfilehash: 887a1e072f2ea9325fa1113446c57e5d68dbd691
+ms.sourcegitcommit: 34d047300d800cf6ff7d9dd3e573a0d785f61abc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131466107"
+ms.lasthandoff: 01/12/2022
+ms.locfileid: "135935309"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>クイックスタート: ユーザーのサインインを処理しその代理で Microsoft Graph を呼び出す ASP.NET Core Web アプリ
 
@@ -25,94 +25,31 @@ ms.locfileid: "131466107"
 
 図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
 
-> [!div renderon="docs"]
-> ## <a name="prerequisites"></a>前提条件
->
-> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) または [Visual Studio Code](https://code.visualstudio.com/)
-> * [.NET Core SDK 3.1 以降](https://dotnet.microsoft.com/download)
->
->
-> ## <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
-> アプリケーションを登録し、その登録情報をソリューションに手動で追加するには、次の手順を実行します。
->
-> 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
-> 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリケーションを登録するテナントに切り替えます。
-> 1. **Azure Active Directory** を検索して選択します。
-> 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
-> 1. アプリケーションの **名前** を入力します (例: `AspNetCoreWebAppCallsGraph-Quickstart`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
-> 1. **リダイレクト URI** として「`https://localhost:44321/signin-oidc`」と入力します。
-> 1. **[登録]** を選択します。
-> 1. **[管理]** で、 **[認証]** を選択します。
-> 1. **[Front-channel logout URL]\(フロントチャネル ログアウト URL\)** に「`https://localhost:44321/signout-oidc`」を入力します。
-> 1. **[保存]** を選択します。
-> 1. **[管理]** で、 **[証明書とシークレット]**  >  **[クライアント シークレット]**  >  **[新しいクライアント シークレット]** の順に選択します。
-> 1. **説明** を入力します (`clientsecret1` など)。
-> 1. シークレットの有効期限として **[1 年間]** を選択します。
-> 1. **[追加]** を選択して、すぐにシークレットの **値** を記録します。この値は後の手順で使用します。 シークレット値は "*二度と表示されず*"、他の方法で取得することはできません。 パスワードと同様に、安全な場所に記録してください。
+## <a name="step-1-configure-your-application-in-the-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
 
-> [!div class="sxs-lookup" renderon="portal"]
-> ## <a name="step-1-configure-your-application-in-the-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
->
-> このクイックスタートのコード サンプルを動作させるには、アプリの登録の **リダイレクト URI** (`https://localhost:44321/signin-oidc`) と **フロントチャネルのログアウト URL** (`https://localhost:44321/signout-oidc`) を追加します。
-> > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [この変更を行う]()
->
-> > [!div id="appconfigured" class="alert alert-info"]
-> > ![構成済み](media/quickstart-v2-aspnet-webapp/green-check.png) アプリケーションはこれらの属性で構成されています。
+このクイックスタートのコード サンプルを動作させるには、アプリの登録の **リダイレクト URI** (`https://localhost:44321/signin-oidc`) と **フロントチャネルのログアウト URL** (`https://localhost:44321/signout-oidc`) を追加します。
+> [!div class="nextstepaction"]
+> [この変更を行う]()
+
+> [!div class="alert alert-info"]
+> ![構成済み](media/quickstart-v2-aspnet-webapp/green-check.png) アプリケーションはこれらの属性で構成されています。
 
 ## <a name="step-2-download-the-aspnet-core-project"></a>手順 2:ASP.NET Core プロジェクトをダウンロードする
 
-> [!div renderon="docs"]
-> [ASP.NET Core ソリューションをダウンロード](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore3-1-callsgraph.zip)します。
+プロジェクトを実行します。
 
-> [!div renderon="portal" class="sxs-lookup"]
-> プロジェクトを実行します。
-
-> [!div renderon="portal" class="sxs-lookup" id="autoupdate" class="nextstepaction"]
+> [!div class="nextstepaction"]
 > [コード サンプルをダウンロードします](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore3-1-callsgraph.zip)
 
 [!INCLUDE [active-directory-develop-path-length-tip](../../../includes/active-directory-develop-path-length-tip.md)]
 
-> [!div class="sxs-lookup" renderon="portal"]
-> ## <a name="step-3-your-app-is-configured-and-ready-to-run"></a>手順 3:アプリが構成され、実行準備ができる
->
-> アプリのプロパティの値を使用してプロジェクトを構成したら、実行する準備は完了です。
-> [!div class="sxs-lookup" renderon="portal"]
-> > [!NOTE]
-> > `Enter_the_Supported_Account_Info_Here`
-> [!div renderon="docs"]
->
-> ## <a name="step-3-configure-your-aspnet-core-project"></a>手順 3:ASP.NET Core プロジェクトの構成
-> 1. .zip アーカイブを、ドライブのルート付近にあるローカル フォルダーに抽出します。 たとえば、*C:\Azure-Samples* に抽出します。
-> 1. Visual Studio 2019 でソリューションを開きます。
-> 1. *appsettings.json* ファイルを開き、次のように変更します。
->
->    ```json
->    "ClientId": "Enter_the_Application_Id_here",
->    "TenantId": "common",
->    "clientSecret": "Enter_the_Client_Secret_Here"
->    ```
->
->    - `Enter_the_Application_Id_here` を、Azure portal で登録したアプリケーションの **アプリケーション (クライアント) ID** に置き換えます。 "**アプリケーション (クライアント) ID**" は、アプリの **[概要]** ページで確認できます。
->    - `common` を、次のいずれかに置き換えます。
->       - アプリケーションで **[この組織のディレクトリ内のアカウントのみ]** がサポートされている場合は、この値を **ディレクトリ (テナント) ID** (GUID) または **テナント名** (例: `contoso.onmicrosoft.com`) に置き換えます。 **ディレクトリ (テナント) ID** は、アプリの **[概要]** ページで確認できます。
->       - アプリケーションで **[任意の組織のディレクトリ内のアカウント]** がサポートされる場合は、この値を `organizations` に置き換えます。
->       - アプリケーションで **[すべての Microsoft アカウント ユーザー]** がサポートされている場合は、この値を `common` のままにします。
->    - `Enter_the_Client_Secret_Here` は、前の手順で作成、記録した **クライアント シークレット** に置き換えます。
->
-> このクイックスタートでは、*appsettings.json* ファイル内のその他の値は変更しないでください。
->
-> ## <a name="step-4-build-and-run-the-application"></a>手順 4: アプリケーションをビルドして実行する
->
-> アプリをビルドして実行するには、Visual Studio で **[デバッグ]** メニュー、 **[デバッグの開始]** の順に選択するか、`F5` キーを押します。
->
-> 資格情報の入力を求められ、アプリに必要なアクセス許可に同意するよう求められます。 同意プロンプトで **[同意する]** を選択します。
->
-> :::image type="content" source="media/quickstart-v2-aspnet-core-webapp-calls-graph/webapp-01-consent.png" alt-text="アプリが > ユーザーから要求しているアクセス許可を示す同意ダイアログ":::
->
-> 要求されたアクセス許可に同意すると、Azure Active Directory の資格情報を使用して正常にログインしたことがアプリに表示され、そのページの "API 結果" セクションにメール アドレスが表示されます。 これは Microsoft Graph を使用して抽出されたものです。
->
-> :::image type="content" source="media/quickstart-v2-aspnet-core-webapp-calls-graph/webapp-02-signed-in.png" alt-text="実行中の Web アプリとサインインしたユーザーが表示されている Web ブラウザー":::
+
+## <a name="step-3-your-app-is-configured-and-ready-to-run"></a>手順 3:アプリが構成され、実行準備ができる
+
+アプリのプロパティの値を使用してプロジェクトを構成したら、実行する準備は完了です。
+
+> [!NOTE]
+> `Enter_the_Supported_Account_Info_Here`
 
 ## <a name="about-the-code"></a>コードについて
 
@@ -127,11 +64,12 @@ ms.locfileid: "131466107"
 *Microsoft.AspNetCore.Authentication* ミドルウェアは、ホスティング プロセスの初期化時に実行される `Startup` クラスを使用します。
 
 ```csharp
-  // Get the scopes from the configuration (appsettings.json)
-  var initialScopes = Configuration.GetValue<string>("DownstreamApi:Scopes")?.Split(' ');
 
   public void ConfigureServices(IServiceCollection services)
-  {
+  {  
+    // Get the scopes from the configuration (appsettings.json)
+    var initialScopes = Configuration.GetValue<string>("DownstreamApi:Scopes")?.Split(' ');
+  
       // Add sign-in with Microsoft
       services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
         .AddMicrosoftIdentityWebApp(Configuration.GetSection("AzureAd"))
