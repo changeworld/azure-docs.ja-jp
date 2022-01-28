@@ -10,15 +10,16 @@ ms.subservice: develop
 ms.topic: portal
 ms.workload: identity
 ms.date: 01/10/2022
+ROBOTS: NOINDEX
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, "scenarios:getting-started", "languages:aspnet-core", mode-api
-ms.openlocfilehash: 707115cd55904a3c831d76ccf194bd67947e3d78
-ms.sourcegitcommit: b55c580fe2bb9fbf275ddf414d547ddde8d71d8a
+ms.openlocfilehash: 417fb1f2c11822b8c475324c15c27a24a1ff49f0
+ms.sourcegitcommit: 3f20f370425cb7d51a35d0bba4733876170a7795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2022
-ms.locfileid: "136834957"
+ms.lasthandoff: 01/27/2022
+ms.locfileid: "137803933"
 ---
 # <a name="quickstart-get-a-token-and-call-the-microsoft-graph-api-by-using-a-console-apps-identity"></a>クイックスタート: コンソール アプリの ID を使用してトークンを取得し、Microsoft Graph API を呼び出す
 

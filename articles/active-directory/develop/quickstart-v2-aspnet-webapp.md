@@ -10,14 +10,15 @@ ms.subservice: develop
 ms.topic: portal
 ms.workload: identity
 ms.date: 11/22/2021
+ROBOTS: NOINDEX
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, "scenarios:getting-started", "languages:ASP.NET", contperf-fy21q1, mode-other
-ms.openlocfilehash: 734003bb94b0d1ccd4e622b698feeb41120a6041
-ms.sourcegitcommit: 34d047300d800cf6ff7d9dd3e573a0d785f61abc
+ms.openlocfilehash: b784950dcd1a5b8f1a55d45719a79a64f1fbdfba
+ms.sourcegitcommit: 3f20f370425cb7d51a35d0bba4733876170a7795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2022
-ms.locfileid: "135919321"
+ms.lasthandoff: 01/27/2022
+ms.locfileid: "137805054"
 ---
 # <a name="quickstart-aspnet-web-app-that-signs-in-azure-ad-users"></a>クイック スタート: Azure AD ユーザーをサインインさせる ASP.NET Web アプリ
 

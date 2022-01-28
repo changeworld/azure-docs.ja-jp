@@ -10,14 +10,15 @@ ms.subservice: develop
 ms.topic: portal
 ms.workload: identity
 ms.date: 11/22/2021
+ROBOTS: NOINDEX
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, "scenarios:getting-started", "languages:ASP.NET", devx-track-js, mode-api
-ms.openlocfilehash: 1076a8b7bcd68c3192e3a67ce737ab50b0ce1c45
-ms.sourcegitcommit: 34d047300d800cf6ff7d9dd3e573a0d785f61abc
+ms.openlocfilehash: 9e246ddaa7670c990ba0f78698b9b5b361fa53a7
+ms.sourcegitcommit: 3f20f370425cb7d51a35d0bba4733876170a7795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2022
-ms.locfileid: "135901130"
+ms.lasthandoff: 01/27/2022
+ms.locfileid: "137803914"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>クイック スタート:OpenID Connect を使用したサインインを Node.js Web アプリに追加する
 

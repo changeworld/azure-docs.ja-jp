@@ -10,14 +10,15 @@ ms.subservice: develop
 ms.topic: portal
 ms.workload: identity
 ms.date: 11/22/2021
+ROBOTS: NOINDEX
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, "scenarios:getting-started", "languages:Python", mode-api
-ms.openlocfilehash: e108c50cd83126c1dc16f99287f3b41f48598c43
-ms.sourcegitcommit: 34d047300d800cf6ff7d9dd3e573a0d785f61abc
+ms.openlocfilehash: 871377543dc91859cf608620436ad311f742f824
+ms.sourcegitcommit: 3f20f370425cb7d51a35d0bba4733876170a7795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2022
-ms.locfileid: "135925818"
+ms.lasthandoff: 01/27/2022
+ms.locfileid: "137803705"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>クイック スタート: Python Web アプリに Microsoft でサインインを追加する
 

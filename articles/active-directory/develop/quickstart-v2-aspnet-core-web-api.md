@@ -10,14 +10,15 @@ ms.subservice: develop
 ms.topic: portal
 ms.workload: identity
 ms.date: 01/11/2022
+ROBOTS: NOINDEX
 ms.author: jmprieur
 ms.custom: devx-track-csharp, "scenarios:getting-started", "languages:aspnet-core", mode-api
-ms.openlocfilehash: c30b50ae0f5eb92f21232096e032a214ec05e316
-ms.sourcegitcommit: 04420fb4695bd70408d9854ad5b2af8a9bbfbc64
+ms.openlocfilehash: 86ca6d8a76bf4d63004f9e20cdf3bffc7699ed53
+ms.sourcegitcommit: 3f20f370425cb7d51a35d0bba4733876170a7795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2022
-ms.locfileid: "136846747"
+ms.lasthandoff: 01/27/2022
+ms.locfileid: "137804849"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-the-microsoft-identity-platform"></a>クイックスタート:Microsoft ID プラットフォームを使用して ASP.NET Core Web API を保護する
 

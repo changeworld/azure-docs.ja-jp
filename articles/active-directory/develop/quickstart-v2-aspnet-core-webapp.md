@@ -10,14 +10,15 @@ ms.subservice: develop
 ms.topic: portal
 ms.workload: identity
 ms.date: 11/22/2021
+ROBOTS: NOINDEX
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, "scenarios:getting-started", "languages:aspnet-core", mode-other
-ms.openlocfilehash: 10568c27645b3735e1ad68e4542ce2d38ae158bf
-ms.sourcegitcommit: 34d047300d800cf6ff7d9dd3e573a0d785f61abc
+ms.openlocfilehash: 7dad1d4840e24c1a2a7b65094ee5c28f45a73f44
+ms.sourcegitcommit: 3f20f370425cb7d51a35d0bba4733876170a7795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2022
-ms.locfileid: "135936655"
+ms.lasthandoff: 01/27/2022
+ms.locfileid: "137802506"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>クイック スタート:ASP.NET Core Web アプリに Microsoft サインインを追加する
 
