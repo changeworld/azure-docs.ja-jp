@@ -10,14 +10,15 @@ ms.subservice: develop
 ms.topic: portal
 ms.workload: identity
 ms.date: 01/10/2022
+ROBOTS: NOINDEX
 ms.author: marsma
 ms.custom: aaddev, "scenarios:getting-started", "languages:Java", devx-track-java, mode-api
-ms.openlocfilehash: 03cbfaf39178f62a570b18dc9a53d50153dbf9da
-ms.sourcegitcommit: b55c580fe2bb9fbf275ddf414d547ddde8d71d8a
+ms.openlocfilehash: 386d1ba5e887b584a73d03cd2fd3434d259b23a3
+ms.sourcegitcommit: 3f20f370425cb7d51a35d0bba4733876170a7795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2022
-ms.locfileid: "136836237"
+ms.lasthandoff: 01/27/2022
+ms.locfileid: "137803287"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-java-console-app-using-apps-identity"></a>クイックスタート: トークンを取得し、Java コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す
 
